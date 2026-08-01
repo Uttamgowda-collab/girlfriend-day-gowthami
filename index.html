@@ -1,2 +1,65 @@
-# girlfriend-day-gowthami
-Girlfriend's Day wishes 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Love Story</title>
+<style>
+  html, body {
+    margin: 0;
+    height: 100%;
+    background: #000;
+    overflow: hidden;
+    font-family: "Segoe UI", sans-serif;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+
+  .screen {
+    text-align: center;
+    opacity: 1;
+    transition: opacity 1.5s ease;
+  }
+
+  .screen.fade-out {
+    opacity: 0;
+  }
+
+  .small {
+    font-size: 18px;
+    letter-spacing: 1px;
+    opacity: 0.9;
+  }
+
+  .rose {
+    font-size: 84px;
+    margin-top: 18px;
+    animation: glow 1.6s infinite alternate;
+  }
+
+  @keyframes glow {
+    from { transform: scale(1); filter: drop-shadow(0 0 8px rgba(255,80,120,0.2)); }
+    to   { transform: scale(1.04); filter: drop-shadow(0 0 20px rgba(255,80,120,0.8)); }
+  }
+</style>
+</head>
+<body>
+
+<div class="screen" id="screen">
+  <div class="small">🎧 Put on your headphones...</div>
+  <div class="rose">🌹</div>
+</div>
+
+<script>
+setTimeout(() => {
+  document.getElementById("screen").classList.add("fade-out");
+}, 2500);
+</script>
+
+</body>
+  </html>

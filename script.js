@@ -1,36 +1,50 @@
 const music = document.getElementById("music");
-
 const typingText = document.getElementById("typingText");
-
 const continueBtn = document.getElementById("continueBtn");
 
-const letter = `Happy Girlfriend's Day, my love.
+const letter = `My Lovely Gowthami ❤️
+
+Happy Girlfriend's Day, my love.
 
 I may not always find the perfect words, but every beat of my heart reminds me how lucky I am to have you in my life.
 
-Your smile brightens my darkest days, your laughter is my favorite melody, and your love is the greatest gift I've ever received.
+Your smile brightens my darkest days.
+Your laughter is my favorite melody.
 
-Thank you for standing by me, believing in me, and making every moment special.
+Thank you for standing by me.
 
-I promise to keep loving you, respecting you, and creating beautiful memories with you.
+I promise to keep loving you forever.
 
-I hope this little surprise brings a smile to your face because your smile means everything to me.
-
-I Love You Forever ❤️
+I Love You ❤️
 
 — Yours Always,
-
 Uttam 🌷`;
 
 let index = 0;
 
+function hideAllScenes(){
+
+document.querySelectorAll(".scene").forEach(scene=>{
+
+scene.classList.remove("active");
+
+});
+
+}
+
 function openLove(){
 
-document.getElementById("scene1").classList.remove("active");
+hideAllScenes();
 
 document.getElementById("scene2").classList.add("active");
 
 music.play().catch(()=>{});
+
+typingText.innerHTML="";
+
+continueBtn.style.display="none";
+
+index=0;
 
 typeLetter();
 
@@ -40,19 +54,21 @@ function typeLetter(){
 
 if(index < letter.length){
 
-if(letter.charAt(index)=="\n"){
+const ch = letter.charAt(index);
+
+if(ch=="\n"){
 
 typingText.innerHTML += "<br>";
 
 }else{
 
-typingText.innerHTML += letter.charAt(index);
+typingText.innerHTML += ch;
 
 }
 
 index++;
 
-setTimeout(typeLetter,35);
+setTimeout(typeLetter,25);
 
 }else{
 
@@ -60,56 +76,52 @@ continueBtn.style.display="inline-block";
 
 }
 
-}
+                        }
 function showScene3(){
 
-document.getElementById("scene2").classList.remove("active");
+hideAllScenes();
 
 document.getElementById("scene3").classList.add("active");
-
-setTimeout(showScene4,8000);
 
 }
 
 function showScene4(){
 
-document.getElementById("scene3").classList.remove("active");
+hideAllScenes();
 
 document.getElementById("scene4").classList.add("active");
 
 }
 
-/* Sparkles */
+/* Floating sparkles */
 
-const emojis=["✨","💖","🌸"];
+const sparkleIcons=["✨","💖","🌸","🌷"];
 
-for(let i=0;i<30;i++){
+for(let i=0;i<25;i++){
 
 const s=document.createElement("div");
 
-s.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+s.innerHTML=sparkleIcons[Math.floor(Math.random()*sparkleIcons.length)];
 
 s.style.position="fixed";
 
 s.style.left=Math.random()*100+"vw";
 
-s.style.top="-20px";
+s.style.top="-50px";
 
-s.style.fontSize=(15+Math.random()*20)+"px";
-
-s.style.opacity=".8";
+s.style.fontSize=(15+Math.random()*18)+"px";
 
 s.style.pointerEvents="none";
 
-s.style.animation="fall "+(6+Math.random()*5)+"s linear infinite";
+s.style.opacity=".8";
+
+s.style.animation="fall "+(5+Math.random()*5)+"s linear infinite";
 
 s.style.animationDelay=Math.random()*5+"s";
 
 document.body.appendChild(s);
 
 }
-
-/* Falling animation */
 
 const style=document.createElement("style");
 

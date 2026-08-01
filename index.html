@@ -41,7 +41,7 @@
   }
 
   .card {
-    width: min(92vw, 540px);
+    width: min(92vw, 560px);
     padding: 26px 20px 28px;
     border-radius: 28px;
     background: rgba(255, 255, 255, 0.06);
@@ -164,20 +164,219 @@
     animation: fadeIn 0.8s forwards;
   }
 
-  .next-title {
-    font-family: 'Great Vibes', cursive;
-    font-size: clamp(34px, 6vw, 58px);
-    color: #fff;
-    text-shadow: 0 0 14px rgba(255, 255, 255, 0.35),
-                 0 0 28px rgba(255, 105, 180, 0.45);
-    margin-bottom: 10px;
+  .letterBox {
+    width: 90%;
+    max-width: 660px;
+    padding: 28px 22px;
+    border-radius: 24px;
+    background: rgba(255,255,255,.08);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 25px rgba(255,105,180,.3);
   }
 
-  .next-text {
+  .letterBox h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(34px, 6vw, 52px);
+    margin-bottom: 18px;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 77, 136, 0.6);
+  }
+
+  #typing {
+    font-size: 17px;
+    line-height: 1.9;
+    text-align: left;
+    white-space: pre-line;
+    min-height: 320px;
+    color: #fff;
+  }
+
+  #continueBtn {
+    margin-top: 22px;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #ff4d88, #ff7aa5);
+    color: white;
+    font-size: 17px;
+    box-shadow: 0 0 20px hotpink;
+    cursor: pointer;
+    display: none;
+  }
+
+  .endNote {
+    margin-top: 14px;
+    font-size: 13px;
+    opacity: 0.72;
+    line-height: 1.5;
+  }
+
+  .final-scene {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background:
+      radial-gradient(circle at top, rgba(255, 77, 136, 0.14), rgba(0,0,0,0.95)),
+      linear-gradient(180deg, #110012 0%, #000 100%);
+    z-index: 20;
+    opacity: 0;
+    overflow: hidden;
+  }
+
+  .final-scene.show {
+    display: flex;
+    animation: fadeIn 1s forwards;
+  }
+
+  .heart-wrap {
+    position: relative;
+    width: min(80vw, 420px);
+    height: min(80vw, 420px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    filter: drop-shadow(0 0 18px rgba(255, 80, 150, 0.35));
+  }
+
+  .heart-svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .heart-path {
+    fill: none;
+    stroke: #ff4d88;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+    animation: drawHeart 4s ease forwards;
+  }
+
+  .photoFrame {
+    width: 62%;
+    height: 62%;
+    border-radius: 26px;
+    padding: 10px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.25);
+    box-shadow:
+      0 0 20px rgba(255, 215, 0, 0.35),
+      0 0 45px rgba(255, 77, 136, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.85);
+    animation: photoReveal 1.6s ease forwards;
+    animation-delay: 2.8s;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .photoFrame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 18px;
+  }
+
+  .finalNames {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(36px, 7vw, 64px);
+    color: #fff;
+    text-shadow: 0 0 12px rgba(255,255,255,0.3), 0 0 24px rgba(255,105,180,0.45);
+    margin-top: 8px;
+    opacity: 0;
+    animation: fadeUp 1.4s forwards;
+    animation-delay: 4.2s;
+  }
+
+  .finalMsg {
+    margin-top: 10px;
     font-size: 16px;
-    opacity: 0.92;
-    max-width: 82%;
+    text-align: center;
     line-height: 1.7;
+    max-width: 82%;
+    opacity: 0;
+    animation: fadeUp 1.4s forwards;
+    animation-delay: 4.8s;
+  }
+
+  .signatureFinal {
+    margin-top: 18px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 34px;
+    color: #ffb6d5;
+    opacity: 0;
+    animation: fadeUp 1.2s forwards;
+    animation-delay: 5.4s;
+  }
+
+  .credits-scene {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: #000;
+    z-index: 30;
+    opacity: 0;
+  }
+
+  .credits-scene.show {
+    display: flex;
+    animation: fadeIn 1s forwards;
+  }
+
+  .creditsTitle {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(42px, 8vw, 72px);
+    color: #fff;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.25),
+                 0 0 28px rgba(255, 105, 180, 0.45);
+    margin-bottom: 14px;
+  }
+
+  .creditsText {
+    font-size: 18px;
+    line-height: 1.9;
+    text-align: center;
+    max-width: 85%;
+    opacity: 0.92;
+  }
+
+  .creditsSmall {
+    margin-top: 18px;
+    font-size: 14px;
+    opacity: 0.7;
+    line-height: 1.6;
+  }
+
+  .petal, .spark {
+    position: absolute;
+    top: -20px;
+    pointer-events: none;
+    z-index: 22;
+  }
+
+  .petal {
+    font-size: 18px;
+    opacity: 0;
+    animation: petalFall linear infinite;
+  }
+
+  .spark {
+    color: #ffd54a;
+    font-size: 16px;
+    opacity: 0;
+    animation: sparkleFall linear infinite;
   }
 
   @keyframes fadeUp {
@@ -216,6 +415,26 @@
     }
   }
 
+  @keyframes petalFall {
+    from {
+      transform: translateY(-20px) rotate(0deg);
+      opacity: 0;
+    }
+    10% { opacity: 1; }
+    100% {
+      transform: translateY(115vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes drawHeart {
+    to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes photoReveal {
+    to { opacity: 1; transform: scale(1); }
+  }
+
   @media (max-width: 480px) {
     .card {
       padding: 22px 16px 24px;
@@ -223,6 +442,14 @@
     }
     button {
       width: 100%;
+    }
+    #typing {
+      font-size: 16px;
+      min-height: 360px;
+    }
+    .photoFrame {
+      width: 68%;
+      height: 68%;
     }
   }
 </style>
@@ -250,10 +477,52 @@
   </div>
 
   <div class="next-scene" id="nextScene">
-    <div class="next-title">Scene 2 is next 💌</div>
-    <div class="next-text">
-      Your love letter scene will open here next.<br>
-      Music starts now, and the story continues.
+    <div class="letterBox">
+      <h1>💌 My Lovely Gowthami ❤️</h1>
+      <div id="typing"></div>
+      <button id="continueBtn" onclick="continueLove()">Continue ❤️</button>
+      <div class="endNote">The music will keep playing softly while the letter appears.</div>
+    </div>
+  </div>
+
+  <div class="final-scene" id="finalScene">
+    <div class="heart-wrap">
+      <svg class="heart-svg" viewBox="0 0 400 400" aria-hidden="true">
+        <path class="heart-path" d="M200 340
+          C 160 305, 120 278, 92 240
+          C 55 190, 62 128, 105 101
+          C 141 78, 186 86, 200 118
+          C 214 86, 259 78, 295 101
+          C 338 128, 345 190, 308 240
+          C 280 278, 240 305, 200 340 Z" />
+      </svg>
+
+      <div class="photoFrame">
+        <img src="gowthami.jpg" alt="Gowthami photo">
+      </div>
+    </div>
+
+    <div class="finalNames">Gowthami & Uttam</div>
+
+    <div class="finalMsg">
+      Happy Girlfriend's Day, my love.<br>
+      Every love story is beautiful...<br>
+      Ours is my favorite. ❤️
+    </div>
+
+    <div class="signatureFinal">— Your Boyfriend, Uttam 🌷</div>
+  </div>
+
+  <div class="credits-scene" id="creditsScene">
+    <div class="creditsTitle">Forever Together</div>
+    <div class="creditsText">
+      Every love story is beautiful...<br>
+      But ours is my favorite. ❤️
+    </div>
+    <div class="creditsSmall">
+      Made with all my love<br>
+      for my lovely Gowthami<br>
+      by Uttam 🌷
     </div>
   </div>
 </div>
@@ -264,10 +533,9 @@
 
 <script>
   const sparkleChars = ["✨", "🌟", "💖"];
-
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < 32; i++) {
     const s = document.createElement("div");
-    s.className = "sparkle";
+    s.className = "spark";
     s.textContent = sparkleChars[Math.floor(Math.random() * sparkleChars.length)];
     s.style.left = Math.random() * 100 + "vw";
     s.style.animationDuration = (5 + Math.random() * 5) + "s";
@@ -276,21 +544,99 @@
     document.body.appendChild(s);
   }
 
+  const letter = `Happy Girlfriend's Day, my love.
+
+I may not always find the perfect words, but every beat of my heart reminds me how lucky I am to have you in my life.
+
+Your smile brightens my darkest days, your laughter is my favorite melody, and your love is the greatest gift I've ever received.
+
+Thank you for standing by me, believing in me, and making every moment special.
+
+I promise to keep loving you, respecting you, and creating beautiful memories with you.
+
+I hope this little surprise brings a smile to your face because your smile means everything to me.
+
+I Love You Forever ❤️
+
+— Yours Always,
+Uttam 🌷`;
+
+  let i = 0;
+  let typingStarted = false;
+
   function openLove() {
     const card = document.getElementById("card");
     const nextScene = document.getElementById("nextScene");
     const music = document.getElementById("music");
 
     music.play().catch(() => {});
-
     card.classList.add("fade-out");
 
     setTimeout(() => {
       card.style.display = "none";
       nextScene.classList.add("show");
+      if (!typingStarted) {
+        typingStarted = true;
+        typeLetter();
+      }
     }, 800);
+  }
+
+  function typeLetter() {
+    const typingBox = document.getElementById("typing");
+
+    if (i < letter.length) {
+      const ch = letter.charAt(i);
+      typingBox.innerHTML += (ch === "\n") ? "<br>" : ch;
+      i++;
+      setTimeout(typeLetter, 35);
+    } else {
+      document.getElementById("continueBtn").style.display = "inline-block";
+    }
+  }
+
+  function continueLove() {
+    const nextScene = document.getElementById("nextScene");
+    const finalScene = document.getElementById("finalScene");
+
+    nextScene.style.display = "none";
+    finalScene.classList.add("show");
+
+    startFinalEffects();
+
+    setTimeout(() => {
+      finalScene.classList.remove("show");
+      document.getElementById("creditsScene").classList.add("show");
+    }, 9000);
+  }
+
+  function startFinalEffects() {
+    const petals = ["🌸", "🌷", "💖"];
+    const sparkChars = ["✨", "🌟", "💫"];
+
+    for (let i = 0; i < 30; i++) {
+      const p = document.createElement("div");
+      p.className = "petal";
+      p.textContent = petals[Math.floor(Math.random() * petals.length)];
+      p.style.left = Math.random() * 100 + "vw";
+      p.style.animationDuration = (6 + Math.random() * 5) + "s";
+      p.style.animationDelay = Math.random() * 2 + "s";
+      p.style.fontSize = (14 + Math.random() * 14) + "px";
+      document.body.appendChild(p);
+    }
+
+    for (let i = 0; i < 18; i++) {
+      const s = document.createElement("div");
+      s.className = "spark";
+      s.textContent = sparkChars[Math.floor(Math.random() * sparkChars.length)];
+      s.style.left = Math.random() * 100 + "vw";
+      s.style.animationDuration = (4 + Math.random() * 4) + "s";
+      s.style.animationDelay = Math.random() * 2 + "s";
+      s.style.fontSize = (12 + Math.random() * 12) + "px";
+      document.body.appendChild(s);
+    }
   }
 </script>
 
 </body>
-  </html>
+ </html>
